@@ -6,7 +6,9 @@
     "jsr:@std/internal@^1.0.4": "1.0.4",
     "npm:commandkit@*": "0.1.10_discord.js@14.16.3",
     "npm:cowsay@1.5.0": "1.5.0",
-    "npm:discord.js@*": "14.16.3"
+    "npm:discord.js@*": "14.16.3",
+    "npm:discord.js@^14.16.3": "14.16.3",
+    "npm:rfdc@^1.4.1": "1.4.1"
   },
   "jsr": {
     "@std/assert@1.0.6": {
@@ -1151,7 +1153,9 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@std/assert@1"
+      "jsr:@std/assert@1",
+      "npm:discord.js@^14.16.3",
+      "npm:rfdc@^1.4.1"
     ]
   }
 }

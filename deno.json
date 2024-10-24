@@ -3,6 +3,10 @@
     "dev": "deno run --watch -A src/main.ts"
   },
   "imports": {
-    "@std/assert": "jsr:@std/assert@1"
+    "@std/assert": "jsr:@std/assert@1",
+    "discord.js": "npm:discord.js@^14.16.3",
+    "rfdc": "npm:rfdc@^1.4.1",
+    "types/": "./src/types/",
+    "utils/": "./src/utils/"
   }
 }
