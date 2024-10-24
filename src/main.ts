@@ -3,6 +3,7 @@ import { CommandKit } from 'npm:commandkit';
 import { Client, GatewayIntentBits } from 'npm:discord.js';
 import path from 'node:path';
 
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -13,8 +14,8 @@ const client = new Client({
 
 new CommandKit({
   client,
-  commandsPath: path.join(__dirname, 'commands'),
-  eventsPath: path.join(__dirname, 'events'),
+  commandsPath: path.join(import.meta.dirname, 'commands'),
+  eventsPath: path.join(import.meta.dirname, 'events'),
   skipBuiltInValidations: true,
   bulkRegister: true,
 });
