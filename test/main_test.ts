@@ -1,6 +1,67 @@
-import { assertEquals } from "@std/assert";
-import { add } from "../src/main.ts";
+import { assertEquals, assert } from "@std/assert";
+import type { Client } from 'discord.js';
+import * as path from "node:path";
 
-Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+
+import logClientOnline from '../src/events/ready/ready.ts';
+
+Deno.test("logClientOnline function should log client user tag as online", () => {
+  // Crear un mock del objeto Client
+  const mockClient = {
+    user: {
+      tag: "MockUser#1234",
+    },
+  } as Client<true>;
+
+  // Capturar la salida de la consola
+  const originalConsoleLog = console.log;
+  let consoleOutput = "";
+  console.log = (output: string) => {
+    consoleOutput = output;
+  };
+
+  // Ejecutar la función con el mock del cliente
+  logClientOnline(mockClient);
+
+  // Restaurar la función original de console.log
+  console.log = originalConsoleLog;
+
+  // Verificar que el mensaje en la consola sea el esperado
+  assertEquals(consoleOutput, "MockUser#1234 is online!");
+});
+
+
+import { DiscordBot } from "../src/DiscordBot.ts";
+
+// Test para verificar que la clase DiscordBot se inicializa correctamente
+Deno.test("DiscordBot initializes with client and loads commands/events", async () => {
+  // Crear un mock de Client
+  const mockClient = new Client({ intents: 32767 });
+
+  // Rutas de ejemplo para comandos y eventos
+  const commandsPath = path.join(import.meta.url, "mockCommands");
+  const eventsPath = path.join(import.meta.url, "mockEvents");
+
+  // Crear los directorios temporales para comandos y eventos (solo para este test)
+  await Deno.mkdir(commandsPath, { recursive: true });
+  await Deno.mkdir(eventsPath, { recursive: true });
+
+  try {
+    // Inicializar el bot
+    const bot = new DiscordBot({
+      client: mockClient,
+      commandsPath,
+      eventsPath,
+    });
+
+    // Verificar que el cliente está correctamente configurado en el bot
+    assert(bot.client === mockClient, "El cliente no se configuró correctamente");
+
+    // Aquí puedes agregar más verificaciones si tu clase DiscordBot tiene métodos o propiedades específicas
+    // Por ejemplo, podrías verificar que el bot ha cargado comandos o eventos
+  } finally {
+    // Limpiar directorios temporales creados
+    await Deno.remove(commandsPath, { recursive: true });
+    await Deno.remove(eventsPath, { recursive: true });
+  }
 });
