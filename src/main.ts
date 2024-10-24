@@ -1,23 +1,18 @@
 import "jsr:@std/dotenv/load";
-import { CommandKit } from 'npm:commandkit';
-import { Client, GatewayIntentBits } from 'npm:discord.js';
 import path from 'node:path';
+import { Client } from 'discord.js';
+import { DiscordBot } from "./DiscordBot.ts";
 
 
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ],
-});
+// create a new Client instance
+const client = new Client({ intents: 32767 });  // GatewayIntentBits.All
 
-new CommandKit({
-  client,
-  commandsPath: path.join(import.meta.dirname, 'commands'),
-  eventsPath: path.join(import.meta.dirname, 'events'),
-  skipBuiltInValidations: true,
-  bulkRegister: true,
-});
+new DiscordBot({
+    client,
+    commandsPath: path.join(import.meta.dirname || '', 'commands'),
+    eventsPath: path.join(import.meta.dirname || '', 'events'),
+})
 
+// login the client
 client.login(Deno.env.get("TOKEN_BOT"));
+
