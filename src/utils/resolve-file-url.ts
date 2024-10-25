@@ -1,4 +1,4 @@
-import path from 'node:path';
+import path from "node:path";
 
 /**
  * Convert a local file path to a file URL.
@@ -6,6 +6,6 @@ import path from 'node:path';
  * @returns - The converted file URL.
  */
 export function toFileURL(filePath: string) {
-    const resolvedPath = path.resolve(filePath);
-    return 'file://' + resolvedPath.replace(/\\\\|\\/g, '/');
+  const resolvedPath = path.resolve(filePath);
+  return "file://" + resolvedPath.replace(/\\\\|\\/g, "/");
 }
