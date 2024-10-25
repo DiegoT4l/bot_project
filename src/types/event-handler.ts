@@ -1,5 +1,5 @@
 // deno-lint-ignore-file ban-types
-import type { Client } from 'discord.js';
+import type { Client } from "discord.js";
 
 /**
  * Event handler options.
