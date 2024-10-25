@@ -1,9 +1,8 @@
-import { assertEquals, assert } from "@std/assert";
-import { Client } from 'discord.js';
+import { assert, assertEquals } from "@std/assert";
+import { Client } from "discord.js";
 import * as path from "node:path";
 
-
-import logClientOnline from '../src/events/ready/ready.ts';
+import logClientOnline from "../src/events/ready/ready.ts";
 
 Deno.test("logClientOnline function should log client user tag as online", () => {
   // Crear un mock del objeto Client
@@ -29,7 +28,6 @@ Deno.test("logClientOnline function should log client user tag as online", () =>
   // Verificar que el mensaje en la consola sea el esperado
   assertEquals(consoleOutput, "MockUser#1234 is online!");
 });
-
 
 import { DiscordBot } from "../src/DiscordBot.ts";
 
@@ -60,7 +58,10 @@ Deno.test("DiscordBot initializes with client and loads commands/events", async 
     });
 
     // Verificar que el cliente está correctamente configurado en el bot
-    assert(bot.client === mockClient, "El cliente no se configuró correctamente");
+    assert(
+      bot.client === mockClient,
+      "El cliente no se configuró correctamente",
+    );
 
     // Aquí puedes agregar más verificaciones si tu clase DiscordBot tiene métodos o propiedades específicas
     // Por ejemplo, podrías verificar que el bot ha cargado comandos o eventos
