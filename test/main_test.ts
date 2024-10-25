@@ -1,5 +1,5 @@
 import { assertEquals, assert } from "@std/assert";
-import type { Client } from 'discord.js';
+import { Client } from 'discord.js';
 import * as path from "node:path";
 
 
@@ -38,13 +38,18 @@ Deno.test("DiscordBot initializes with client and loads commands/events", async 
   // Crear un mock de Client
   const mockClient = new Client({ intents: 32767 });
 
-  // Rutas de ejemplo para comandos y eventos
-  const commandsPath = path.join(import.meta.url, "mockCommands");
-  const eventsPath = path.join(import.meta.url, "mockEvents");
+  // Directorios de prueba para comandos y eventos
+  const commandsPath = path.join(Deno.cwd(), "mockCommands");
+  const eventsPath = path.join(Deno.cwd(), "mockEvents");
 
-  // Crear los directorios temporales para comandos y eventos (solo para este test)
-  await Deno.mkdir(commandsPath, { recursive: true });
-  await Deno.mkdir(eventsPath, { recursive: true });
+  // Crear los directorios temporales para comandos y eventos
+  // Si ya existen, no hace falta recrearlos
+  try {
+    await Deno.mkdir(commandsPath, { recursive: true });
+    await Deno.mkdir(eventsPath, { recursive: true });
+  } catch (err) {
+    console.error("Error creating directories:", err);
+  }
 
   try {
     // Inicializar el bot
