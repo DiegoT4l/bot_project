@@ -1,3 +1,3 @@
-import rfdc from 'npm:rfdc';
+import rfdc from "npm:rfdc";
 
 export const clone = rfdc();

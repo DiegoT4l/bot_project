@@ -4,10 +4,12 @@
     "jsr:@std/assert@1": "1.0.6",
     "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/internal@^1.0.4": "1.0.4",
-    "npm:commandkit@*": "0.1.10_discord.js@14.16.3",
+    "npm:@types/node@*": "22.5.4",
+    "npm:async_hooks@*": "1.0.0",
     "npm:cowsay@1.5.0": "1.5.0",
     "npm:discord.js@*": "14.16.3",
     "npm:discord.js@^14.16.3": "14.16.3",
+    "npm:rfdc@*": "1.4.1",
     "npm:rfdc@^1.4.1": "1.4.1"
   },
   "jsr": {
@@ -314,6 +316,9 @@
     "array-union@2.1.0": {
       "integrity": "sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw=="
     },
+    "async_hooks@1.0.0": {
+      "integrity": "sha512-t4BSJgx48V3e7U6Ll3/WOUNmxIRPzmPdxVfgbyzcnRItEnn4iKp4F//b0sV3L9hzbdr5qxWdNWzOF7t+rjYSfA=="
+    },
     "balanced-match@1.0.2": {
       "integrity": "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="
     },
@@ -410,18 +415,6 @@
     },
     "commander@4.1.1": {
       "integrity": "sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA=="
-    },
-    "commandkit@0.1.10_discord.js@14.16.3": {
-      "integrity": "sha512-b04sqrnOqmtQ4FbkxT7vva0xhP3+C8I1qa8ySlqdpNG0EwvlabPvTh4TAnaAAd6RUHi20iOomyWOoRgAsHX4Yg==",
-      "dependencies": [
-        "commander@11.1.0",
-        "discord.js",
-        "dotenv",
-        "ora",
-        "rfdc",
-        "rimraf",
-        "tsup"
-      ]
     },
     "cowsay@1.5.0": {
       "integrity": "sha512-8Ipzr54Z8zROr/62C8f0PdhQcDusS05gKTS87xxdji8VbWefWly0k8BwGK7+VqamOrkv3eGsCkPtvlHzrhWsCA==",
